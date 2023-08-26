@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Resume Generator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Online Resume Generator</h1>
+  <form id="resumeForm">
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" required><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required><br><br>
+    
+    <label for="experience">Experience:</label>
+    <textarea id="experience" name="experience" rows="4" required></textarea><br><br>
+    
+    <label for="education">Education:</label>
+    <textarea id="education" name="education" rows="4" required></textarea><br><br>
+    
+    <button type="submit">Generate Resume</button>
+  </form>
+  
+  <div id="generatedResume" style="display: none;">
+    <h2>Generated Resume</h2>
+    <div id="resumeOutput"></div>
+  </div>
+</div>
+
+<script>
+document.getElementById("resumeForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  const fullName = document.getElementById("fullName").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+  const experience = document.getElementById("experience").value;
+  const education = document.getElementById("education").value;
+  
+  const resumeOutput = `
+    <h3>${fullName}</h3>
+    <p>Email: ${email}</p>
+    <p>Phone: ${phone}</p>
+    <h4>Experience:</h4>
+    <p>${experience}</p>
+    <h4>Education:</h4>
+    <p>${education}</p>
+  `;
+  
+  document.getElementById("resumeOutput").innerHTML = resumeOutput;
+  document.getElementById("generatedResume").style.display = "block";
+});
+</script>
+</body>
+</html>
